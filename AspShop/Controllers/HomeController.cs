@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace AspShop.Controllers
 {
@@ -15,7 +11,7 @@ namespace AspShop.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "This project is built by Robert for test and demonstration of various concepts in ASP. For further details please check the descriptions (ReadMe)of the involved repositories.";
 
             return View();
         }
