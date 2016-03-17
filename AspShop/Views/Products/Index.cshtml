@@ -1,0 +1,27 @@
+﻿@model AspShop.Models.ProductsViewModel
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<table class="table">
+    @foreach (var item in Model.Items)
+    {
+        string imageSrc = "";
+        if (@item.ThumbNailPhoto != null)
+        {
+            string imageBase64 = Convert.ToBase64String(@item.ThumbNailPhoto);
+            imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+        }
+        <tr>
+            <td><img src="@imageSrc" /></td>
+            <td>@item.ProductCategory</td>
+            <td>@item.ProductSubcategory</td>
+            <td>@item.Name</td>
+            <td>@item.ListPrice</td>
+            <td>@item.SizeUnitMeasureCode</td>
+            <td>@item.Color</td>
+            <td>@Html.ActionLink("Details", "Details", "Products", new { id = @item.Id })</td>
+        </tr>
+    }
+</table>
