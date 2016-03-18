@@ -16,10 +16,11 @@ namespace AspShop.Controllers
 
         // GET: Product
         // TODO Parameter.
-        public ActionResult Details()
+        public ActionResult Product(int id)
         {
-            // TODO
-            return null;
+            var viewModel = new ProductViewModel();
+
+            return View(viewModel);
         }
     }
 }

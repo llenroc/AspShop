@@ -4,7 +4,10 @@
     ViewBag.Title = "Products";
 }
 
-<table class="table">
+@*TODO Get the full width working for up to 4 records.*@
+@*TODO Get wrapping records right in combination with internal text wrapping.*@
+@* Not there currently is already a container around this elsewhere. *@
+<div class="row">
     @foreach (var item in Model.Items)
     {
         string imageSrc = "";
@@ -13,15 +16,20 @@
             string imageBase64 = Convert.ToBase64String(@item.ThumbNailPhoto);
             imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
         }
-        <tr>
-            <td><img src="@imageSrc" /></td>
-            <td>@item.ProductCategory</td>
-            <td>@item.ProductSubcategory</td>
-            <td>@item.Name</td>
-            <td>@item.ListPrice</td>
-            <td>@item.SizeUnitMeasureCode</td>
-            <td>@item.Color</td>
-            <td>@Html.ActionLink("Details", "Details", "Products", new { id = @item.Id })</td>
-        </tr>
+        <div class="col-lg-3" style="border: solid 1px black; margin:3px; padding: 5px">
+            <div class="col-lg-4">
+                <img src="@imageSrc" /><br />
+                @*TODO Get vertical alignment down.*@
+                @*TODO Turn this into a button.*@
+                <div>@Html.ActionLink("Details", "Product", "Products", new { id = item.Id }, null)</div><br />
+            </div>
+            <div class="col-lg-8">
+                @item.ProductCategory / @item.ProductSubcategory<br />
+                <b>@item.Name</b><br />
+                <b>@item.ListPrice</b><br />
+                @item.Size @item.SizeUnitMeasureCode<br />
+                @item.Color<br />
+            </div>
+        </div>
     }
-</table>
+</div>
