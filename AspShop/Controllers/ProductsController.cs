@@ -6,7 +6,7 @@ namespace AspShop.Controllers
     public class ProductsController : Controller
     {
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Products()
         {
             var viewModel = new ProductsViewModel();
             viewModel.ReadFiltered();
@@ -15,7 +15,6 @@ namespace AspShop.Controllers
         }
 
         // GET: Product
-        // TODO Parameter.
         public ActionResult Product(int id)
         {
             var viewModel = new ProductViewModel();
