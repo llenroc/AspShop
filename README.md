@@ -1,6 +1,18 @@
 ## AspShop
 
-#### Intention
-* Testing and demoing some ASP techniques, of which MVC in particular.
-* It should become an equivalent of the WpfShop
-* This project has just started.
+#### Purpose
+* Testing and demoing some ASP techniques, MVC in particular.
+* It should become an equivalent of the WpfShop.
+* Follow the commits to see in what stage this is in.
+
+#### Aspects
+* MVC.
+* Razor.
+* Bootstrap.
+* Client-server.
+* WCF.
+* NuGet.
+* ...
+
+#### Prerequisites
+* The application assumes the presence of my AdventureWorksServices, to which a connection should be configured.
