@@ -1,8 +1,38 @@
 ﻿@model AspShop.Models.ProductViewModel
 
 @{
-    ViewBag.Title = "Product";
+    var item = Model.Item;
+
+    if (item != null)
+    {
+        ViewBag.Title = item.Name;
+
+        string imageSrc = "";
+
+        if (item.LargePhoto != null)
+        {
+            string imageBase64 = Convert.ToBase64String(@item.LargePhoto);
+            imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+        }
+
+        <div class="row" style="border: solid 1px black; margin:3px; padding: 5px">
+            <div class="col-lg-4">
+                <img src="@imageSrc" /><br />
+            </div>
+
+            <div class="col-lg-8">
+                @item.ProductCategory / @item.ProductSubcategory<br />
+                @item.ModelName<br />
+                <b>@item.Name</b><br />
+                @item.ProductNumber<br />
+                <b>@item.ListPrice</b><br />
+                @item.Size @item.SizeUnitMeasureCode<br />
+                @item.Weight @item.SizeUnitMeasureCode<br />
+                @item.Color<br />
+                <p>@item.Description</p>
+            </div>
+        </div>
+    }
 }
 
-<h3>Details</h3>
 <p>@Html.ActionLink("Back to List", "Products")</p>

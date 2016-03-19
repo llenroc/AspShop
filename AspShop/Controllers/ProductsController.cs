@@ -9,7 +9,7 @@ namespace AspShop.Controllers
         public ActionResult Products()
         {
             var viewModel = new ProductsViewModel();
-            viewModel.ReadFiltered();
+            viewModel.Refresh();
 
             return View(viewModel);
         }
@@ -18,6 +18,7 @@ namespace AspShop.Controllers
         public ActionResult Product(int id)
         {
             var viewModel = new ProductViewModel();
+            viewModel.Refresh(id);
 
             return View(viewModel);
         }

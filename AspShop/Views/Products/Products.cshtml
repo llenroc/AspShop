@@ -1,7 +1,9 @@
 ﻿@model AspShop.Models.ProductsViewModel
 
 @{
-    ViewBag.Title = "Products";
+    // HACK
+    // TODO Follow filters.
+    ViewBag.Title = "Mountain Bikes";
 }
 
 @*TODO Get the full width working for up to 4 records.*@
@@ -11,11 +13,14 @@
     @foreach (var item in Model.Items)
     {
         string imageSrc = "";
-        if (@item.ThumbNailPhoto != null)
+
+        // TODO Turn this into a 'converter' somewhere.
+        if (item.ThumbNailPhoto != null)
         {
             string imageBase64 = Convert.ToBase64String(@item.ThumbNailPhoto);
             imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
         }
+
         <div class="col-lg-3" style="border: solid 1px black; margin:3px; padding: 5px">
             <div class="col-lg-4">
                 <img src="@imageSrc" /><br />
@@ -23,6 +28,7 @@
                 @*TODO Turn this into a button.*@
                 <div>@Html.ActionLink("Details", "Product", "Products", new { id = item.Id }, null)</div><br />
             </div>
+
             <div class="col-lg-8">
                 @item.ProductCategory / @item.ProductSubcategory<br />
                 <b>@item.Name</b><br />

@@ -13,7 +13,13 @@ namespace AspShop.Models
 
         public List<ProductsOverviewObject> Items { get; set; }
 
-        public void ReadFiltered()
+        public void Refresh()
+        {
+            Items.Clear();
+            ReadFiltered();
+        }
+
+        private void ReadFiltered()
         {
             // HACK
             var masterFilterValue = new ProductCategory() { Id = 1 };
@@ -41,7 +47,7 @@ namespace AspShop.Models
             }
         }
 
-        public IList<ProductsOverviewObject> ReadList(ProductCategory category, ProductSubcategory subcategory, string namePart)
+        private IList<ProductsOverviewObject> ReadList(ProductCategory category, ProductSubcategory subcategory, string namePart)
         {
             var productOverview = ProductsServiceClient.GetProductsOverviewBy(
                     category != null ? category.Id : null,
