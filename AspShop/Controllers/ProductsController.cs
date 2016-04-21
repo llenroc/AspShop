@@ -6,12 +6,16 @@ namespace AspShop.Controllers
     public class ProductsController : Controller
     {
         // GET: Products
+        // TODO Get the filters, or at least category and subcategory, into the [Route]? Use a Post somehow?
         public ActionResult Products()
         {
+            // TODO Have viewModel implicit in cshtml like elsewhere, or the other way around like here? 
+            // Currently 2 ways have been used.
             var viewModel = new ProductsViewModel();
             viewModel.Refresh();
 
-            return View(viewModel);
+            // Note no direct instances of the cshtml views can be made, so this dependent of explicit or even implicit names instead of strongly typed objects.
+            return View("Products", viewModel);
         }
 
         // GET: Product
@@ -20,7 +24,7 @@ namespace AspShop.Controllers
             var viewModel = new ProductViewModel();
             viewModel.Refresh(id);
 
-            return View(viewModel);
+            return View("Product", viewModel);
         }
     }
 }

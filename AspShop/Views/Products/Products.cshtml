@@ -1,4 +1,5 @@
-﻿@model AspShop.Models.ProductsViewModel
+﻿@using AspShop.Models
+@model ProductsViewModel
 
 @{
     // HACK
@@ -6,36 +7,92 @@
     ViewBag.Title = "Mountain Bikes";
 }
 
-@*TODO Get the full width working for up to 4 records.*@
-@*TODO Get wrapping records right in combination with internal text wrapping.*@
-@* Not there currently is already a container around this elsewhere. *@
+@*TODO Use a navbar?*@
+<h4>Products</h4>
+
 <div class="row">
-    @foreach (var item in Model.Items)
-    {
-        string imageSrc = "";
-
-        // TODO Turn this into a 'converter' somewhere.
-        if (item.ThumbNailPhoto != null)
-        {
-            string imageBase64 = Convert.ToBase64String(@item.ThumbNailPhoto);
-            imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
-        }
-
-        <div class="col-lg-3" style="border: solid 1px black; margin:3px; padding: 5px">
-            <div class="col-lg-4">
-                <img src="@imageSrc" /><br />
-                @*TODO Get vertical alignment down.*@
-                @*TODO Turn this into a button.*@
-                <div>@Html.ActionLink("Details", "Product", "Products", new { id = item.Id }, null)</div><br />
+    <div class="col-lg-4">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Category <span class="caret" />
+                </button>
+                <ul class="dropdown-menu">
+                    @foreach (var category in Model.MasterFilterItems)
+                    {
+                        <li>@category.Name</li>
+                    }
+                </ul>
             </div>
-
-            <div class="col-lg-8">
-                @item.ProductCategory / @item.ProductSubcategory<br />
-                <b>@item.Name</b><br />
-                <b>@item.ListPrice</b><br />
-                @item.Size @item.SizeUnitMeasureCode<br />
-                @item.Color<br />
-            </div>
+            @*TODO Get selection.*@
+            <input type="text" class="form-control" aria-label="...">
         </div>
-    }
+    </div>
+    <div class="col-lg-4">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Subcategory <span class="caret" />
+                </button>
+                <ul class="dropdown-menu">
+                    @foreach (var subcategory in Model.DetailFilterItems)
+                    {
+                        <li>@subcategory.Name</li>
+                    }
+                </ul>
+            </div>
+            <input type="text" class="form-control" aria-label="...">
+        </div>
+    </div>
+    <div class="col-lg-2">
+        <input type="button" class="btn btn-primary" value="Filter" />
+        <b>@Model.Items.Count</b> Products
+    </div>
+</div>
+
+<div style="border: solid 1px black; margin: 2px; padding: 3px">
+    @*TODO Get the full width working for up to 4 records.*@
+    @*TODO Get wrapping records right in combination with internal text wrapping.*@
+
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var item in Model.Items)
+            {
+                string imageSrc = "";
+
+                // TODO Turn this into a 'converter' somewhere.
+                if (item.ThumbNailPhoto != null)
+                {
+                    string imageBase64 = Convert.ToBase64String(@item.ThumbNailPhoto);
+                    imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                }
+
+                <div class="col-lg-3" style="border: solid 1px black; margin: 2px; padding: 3px">
+                    <div class="col-lg-4">
+                        <img src="@imageSrc" /><br />
+
+                        @*TODO Get vertical alignment down?*@
+                        <div>
+                            <button class="btn btn-primary btn-xs" data-productid="@item.Id">
+                                Add to <span class="glyphicon glyphicon-shopping-cart" />
+                            </button>
+                        </div>
+                        <div>
+                            <a href="@Url.Action("Product", "Products", new { id = item.Id })" class="btn btn-info btn-xs">
+                                Details <span class="glyphicon glyphicon-arrow-right"></span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-8">
+                        @item.ProductCategory / @item.ProductSubcategory<br />
+                        <b>@item.Name</b><br />
+                        <b>@item.ListPrice</b><br />
+                        @item.Size @item.SizeUnitMeasureCode<br />
+                        @item.Color<br />
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </div>

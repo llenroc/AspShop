@@ -1,31 +1,75 @@
-﻿using AspShop.ServiceClients.Products.ProductsService;
+﻿using AspShop.Common;
 using Common.DomainClasses;
-using System.Collections.Generic;
+using System;
+using System.Linq;
 
 namespace AspShop.Models
 {
-    public class ProductsViewModel
+    public class ProductsViewModel : FilterItemsViewModel<ProductsOverviewObject, ProductCategory, ProductSubcategory>
     {
         public ProductsViewModel()
         {
-            Items = new List<ProductsOverviewObject>();
+            // HACK
+            MasterFilterValue = new ProductCategory() { Id = 1, Name = "Bikes" };
+            DetailFilterValue = new ProductSubcategory() { Id = 1, ProductCategoryId = 1, Name = "Mountain Bikes" };
+            TextFilterValue = "sil";
         }
 
-        public List<ProductsOverviewObject> Items { get; set; }
+        private bool filterInitialized;
 
-        public void Refresh()
+        public override void Refresh()
         {
             Items.Clear();
-            ReadFiltered();
+
+            if (!filterInitialized)
+            {
+                InitializeFilters();
+                ReadFiltered();
+            }
+            else
+            {
+                ReadFiltered();
+            }
         }
+
+        ProductCategoriesRepository productCategoriesRepository = new ProductCategoriesRepository();
+        ProductSubcategoriesRepository productSubcategoriesRepository = new ProductSubcategoriesRepository();
+
+        protected override void InitializeFilters()
+        {
+            var productCategories = productCategoriesRepository.ReadList();
+
+            foreach (var item in productCategories)
+            {
+                MasterFilterItems.Add(item);
+            }
+
+            var productSubcategories = productSubcategoriesRepository.ReadList();
+
+            foreach (var item in productSubcategories)
+            {
+                detailFilterItemsSource.Add(item);
+                // HACK
+                DetailFilterItems.Add(item);
+            }
+
+            int masterDefaultId = 1;
+            MasterFilterValue = MasterFilterItems.FirstOrDefault(category => category.Id == masterDefaultId);
+
+            // TODO Note that MasterFilterValue also determines DetailFilterItems.
+            int detailDefaultId = 1;
+            DetailFilterValue = DetailFilterItems.FirstOrDefault(subcategory => subcategory.Id == detailDefaultId);
+
+            TextFilterValue = default(string);
+
+            filterInitialized = true;
+        }
+
+        ProductsRepository productsRepository = new ProductsRepository();
 
         private void ReadFiltered()
         {
-            // HACK
-            var masterFilterValue = new ProductCategory() { Id = 1 };
-            var detailFilterValue = new ProductSubcategory() { Id = 1, ProductCategoryId = 1 };
-            var textFilterValue = "sil";
-            var result = ReadList(masterFilterValue, detailFilterValue, textFilterValue);
+            var result = productsRepository.ReadList(MasterFilterValue, DetailFilterValue, TextFilterValue);
 
             foreach (var item in result)
             {
@@ -33,28 +77,12 @@ namespace AspShop.Models
             }
         }
 
-        private ProductsServiceClient productsServiceClient;
-
-        // TODO Check this.
-        protected ProductsServiceClient ProductsServiceClient
+        protected override Func<ProductSubcategory, bool> DetailFilterItemsSelector(bool preserveEmptyElement = true)
         {
-            get
-            {
-                if (productsServiceClient == null)
-                    productsServiceClient = new ProductsServiceClient();
-
-                return productsServiceClient;
-            }
-        }
-
-        private IList<ProductsOverviewObject> ReadList(ProductCategory category, ProductSubcategory subcategory, string namePart)
-        {
-            var productOverview = ProductsServiceClient.GetProductsOverviewBy(
-                    category != null ? category.Id : null,
-                    subcategory != null ? subcategory.Id : null,
-                    namePart);
-
-            return productOverview;
+            return subcategory =>
+                MasterFilterValue != null &&
+                !MasterFilterValue.IsEmpty() &&
+                (preserveEmptyElement && subcategory.IsEmpty() || subcategory.ProductCategoryId == MasterFilterValue.Id);
         }
     }
 }

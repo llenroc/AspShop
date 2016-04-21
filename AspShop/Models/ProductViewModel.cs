@@ -1,36 +1,15 @@
-﻿using AspShop.ServiceClients.Products.ProductsService;
+﻿using AspShop.Common;
 using Common.DomainClasses;
 
 namespace AspShop.Models
 {
-    public class ProductViewModel
+    public class ProductViewModel : ItemViewModel<Product>
     {
-        public Product Item { get; set; }
+        private ProductsRepository productsRepository = new ProductsRepository();
 
-        public void Refresh(object productId)
+        public override void Refresh(object productId)
         {
-            Item = ReadDetails((int)productId);
-        }
-
-        private Product ReadDetails(int productID)
-        {
-            var product = ProductsServiceClient.GetProductDetails(productID);
-
-            return product;
-        }
-
-        private ProductsServiceClient productsServiceClient;
-
-        // TODO Check this.
-        protected ProductsServiceClient ProductsServiceClient
-        {
-            get
-            {
-                if (productsServiceClient == null)
-                    productsServiceClient = new ProductsServiceClient();
-
-                return productsServiceClient;
-            }
+            Item = productsRepository.ReadDetails((int)productId);
         }
     }
 }

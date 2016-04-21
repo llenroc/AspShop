@@ -1,38 +1,49 @@
-﻿@model AspShop.Models.ProductViewModel
+﻿@using AspShop.Models
+@model ProductViewModel
 
-@{
-    var item = Model.Item;
+<div class="container-fluid">
+    <div class="row">
+        @{
+            var item = Model.Item;
 
-    if (item != null)
-    {
-        ViewBag.Title = item.Name;
+            if (item != null)
+            {
+                ViewBag.Title = item.Name;
 
-        string imageSrc = "";
+                string imageSrc = "";
 
-        if (item.LargePhoto != null)
-        {
-            string imageBase64 = Convert.ToBase64String(@item.LargePhoto);
-            imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                if (item.LargePhoto != null)
+                {
+                    string imageBase64 = Convert.ToBase64String(@item.LargePhoto);
+                    imageSrc = string.Format("data:image/gif;base64,{0}", imageBase64);
+                }
+
+                <div class="col-lg-4">
+                    <img src="@imageSrc" /><br />
+                    <div>
+                        <button class="btn btn-primary btn-xs" data-productid="@item.Id">
+                            Add to <span class="glyphicon glyphicon-shopping-cart" />
+                        </button>
+                    </div>
+                    <div>
+                        <a href="@Url.Action("Products", "Products")" class="btn btn-info btn-xs">
+                            <span class="glyphicon glyphicon-arrow-left"></span> Overview
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    @item.ProductCategory / @item.ProductSubcategory<br />
+                    @item.ModelName<br />
+                    <b>@item.Name</b><br />
+                    @item.ProductNumber<br />
+                    <b>@item.ListPrice</b><br />
+                    @item.Size @item.SizeUnitMeasureCode<br />
+                    @item.Weight @item.SizeUnitMeasureCode<br />
+                    @item.Color<br />
+                    <p>@item.Description</p>
+                </div>
+            }
         }
-
-        <div class="row" style="border: solid 1px black; margin:3px; padding: 5px">
-            <div class="col-lg-4">
-                <img src="@imageSrc" /><br />
-            </div>
-
-            <div class="col-lg-8">
-                @item.ProductCategory / @item.ProductSubcategory<br />
-                @item.ModelName<br />
-                <b>@item.Name</b><br />
-                @item.ProductNumber<br />
-                <b>@item.ListPrice</b><br />
-                @item.Size @item.SizeUnitMeasureCode<br />
-                @item.Weight @item.SizeUnitMeasureCode<br />
-                @item.Color<br />
-                <p>@item.Description</p>
-            </div>
-        </div>
-    }
-}
-
-<p>@Html.ActionLink("Back to List", "Products")</p>
+    </div>
+</div>
