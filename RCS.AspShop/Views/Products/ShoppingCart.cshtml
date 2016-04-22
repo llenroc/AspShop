@@ -1,0 +1,19 @@
+﻿@using RCS.AspShop.Models
+@model ShoppingCartViewModel
+
+@*
+    TODO Keep a shoppingcart.
+    - On web client? How to keep data? Cookies? ViewStatë? ViewBag? ViewData? The (passed) ViewModel?! (Note I am already using Items.)
+    - Benefit from web server? Use ChildActionExtensions?
+    - Actually store data through web server? Not intended.
+
+    Read various web articles already collected.
+*@
+
+<div class="container-fluid">
+    <h5>ShoppingCart</h5>
+
+    <b>@Model.Items.Count</b> Products
+    <b>@Model.ProductItemsCount</b> Items
+    <b>@Model.TotalValue</b> Total Value
+</div>
