@@ -32,8 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common">
-      <HintPath>C:\Users\Robert\Documents\Visual Studio 2015\Projects\projects\RCS\AdventureWorksServices\ProductsService\bin\Common.dll</HintPath>
+    <Reference Include="RCS.AdventureWorks.Common">
+      <HintPath>..\..\AdventureWorks\RCS.AdventureWorks.Services.Products\bin\RCS.AdventureWorks.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,40 +58,37 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="Service References\ProductsService\ProductsService.wsdl" />
-    <None Include="Service References\ProductsService\ProductsService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductsService\ProductsService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductsService\ProductsService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductsService\ProductsService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadataStorage Include="Service References\ProductsService\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\ProductsService\ProductsService.disco" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="app.config" />
     <None Include="Service References\ProductsService\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ProductsService\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\ProductsService\ProductsService1.wsdl" />
+    <None Include="Service References\ProductsService\ProductsService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductsService\ProductsService41.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductsService\ProductsService42.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductsService\ProductsService43.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductsService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Service References\ProductsService\ProductsService1.disco" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

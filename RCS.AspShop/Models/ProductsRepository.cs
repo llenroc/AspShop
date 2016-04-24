@@ -1,4 +1,4 @@
-﻿using Common.DomainClasses;
+﻿using RCS.AdventureWorks.Common.DomainClasses;
 using RCS.AspShop.Common;
 using RCS.AspShop.ServiceClients.Products.ProductsService;
 using System.Collections.Generic;

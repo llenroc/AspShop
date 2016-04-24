@@ -15,4 +15,4 @@
 * ...
 
 #### Prerequisites
-* The application assumes the presence of my AdventureWorksServices, to which a connection should be configured.
+* The application assumes the presence of my AdventureWorks, to which a service connection should be configured.
