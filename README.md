@@ -1,8 +1,7 @@
 ## AspShop
 
 Submitted to code analysis by **[Better Code Hub](https://bettercodehub.com)**.  
-Current score: [![BCH compliance](https://bettercodehub.com/edge/badge/a-einstein/AspShop)](https://bettercodehub.com)  
-
+Current score: [![BCH compliance](https://bettercodehub.com/edge/badge/a-einstein/AspShop)](https://bettercodehub.com)
 
 #### Purpose
 * Testing and demoing some WPF techniques.
