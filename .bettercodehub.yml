@@ -1,0 +1,14 @@
+exclude:
+- /RCS.AspShop/App_Start/.*
+- /RCS.AspShop/Controllers/AccountController.cs
+- /RCS.AspShop/Controllers/ManageController.cs
+- /RCS.AspShop/Global.asax.cs
+- /RCS.AspShop/Models/AccountViewModels.cs
+- /RCS.AspShop/Models/IdentityModels.cs
+- /RCS.AspShop/Models/ManageViewModels.cs
+- /RCS.AspShop/Scripts/.*
+- /RCS.AspShop/Startup.cs
+component_depth: 1
+languages:
+- csharp
+- javascript

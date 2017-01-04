@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCS.AspShop", "RCS.AspShop\RCS.AspShop.csproj", "{9A71523F-98D7-4C79-BC84-62BE60C7F83C}"
 EndProject
@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RCS.AspShop.ServiceClients.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0021E723-2F19-4604-A8EC-A537D2CE35B3}"
 	ProjectSection(SolutionItems) = preProject
+		.bettercodehub.yml = .bettercodehub.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
