@@ -4,9 +4,8 @@ Submitted to code analysis by **[Better Code Hub](https://bettercodehub.com)**.
 Current score: [![BCH compliance](https://bettercodehub.com/edge/badge/a-einstein/AspShop)](https://bettercodehub.com)
 
 #### Purpose
-* Testing and demoing some ASP techniques, MVC in particular.
-* It should become an equivalent of the WpfShop.
-* Follow the commits to see in what stage this is in.
+* Creating a working web application for test and demo purpose based on ASP and MVC.
+* This should become an equivalent of my WpfShop. Follow the commits to see in what stage this is in.
 
 #### Aspects
 * MVC.
@@ -18,4 +17,4 @@ Current score: [![BCH compliance](https://bettercodehub.com/edge/badge/a-einstei
 * ...
 
 #### Prerequisites
-* The application assumes the presence of my AdventureWorks, to which a service connection should be configured.
+* The application assumes the presence of my AdventureWorks services, to which a service connection should be configured.
