@@ -8,12 +8,13 @@ Current score: [![BCH compliance](https://bettercodehub.com/edge/badge/a-einstei
 * This should become an equivalent of my WpfShop. Follow the commits to see in what stage this is in.
 
 #### Aspects
+* C#.
 * MVC.
-* Razor.
-* Bootstrap.
+* HTML.
+* Razor C#.
+* Bootstrap styling.
 * Client-server.
 * WCF.
-* NuGet.
 * ...
 
 #### Prerequisites
