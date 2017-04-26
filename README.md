@@ -9,7 +9,7 @@ Current score: [![BCH compliance](https://bettercodehub.com/edge/badge/a-einstei
 
 #### Aspects
 * C#.
-* MVC.
+* MVC + https.
 * HTML.
 * Razor C#.
 * Bootstrap styling.
