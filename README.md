@@ -4,17 +4,15 @@ Submitted to code analysis by **[Better Code Hub](https://bettercodehub.com)**.
 Current score: [![BCH compliance](https://bettercodehub.com/edge/badge/a-einstein/AspShop)](https://bettercodehub.com)
 
 #### Purpose
-* Creating a working web application for test and demo purpose based on ASP and MVC.
+* Creating a working web application for test and demo purpose based on MVC.
 * This should become an equivalent of my WpfShop. Follow the commits to see in what stage this is in.
 
 #### Aspects
-* C#.
-* MVC + https.
-* HTML.
-* Razor C#.
+* MVC.
+* C# + HTML.
+* Razor.
 * Bootstrap styling.
-* Client-server.
-* WCF.
+* Client-server WCF + SSL.
 * ...
 
 #### Prerequisites
