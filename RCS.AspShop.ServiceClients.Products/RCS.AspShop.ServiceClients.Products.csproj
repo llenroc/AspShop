@@ -33,7 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="RCS.AdventureWorks.Common">
-      <HintPath>..\..\..\..\services\AdventureWorks\RCS.AdventureWorks.Common\bin\Debug\RCS.AdventureWorks.Common.dll</HintPath>
+      <HintPath>..\..\..\services\AdventureWorks\RCS.AdventureWorks.Services.Products\bin\RCS.AdventureWorks.Common.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Runtime.Serialization" />

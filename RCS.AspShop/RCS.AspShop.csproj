@@ -59,7 +59,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RCS.AdventureWorks.Common">
-      <HintPath>..\..\AdventureWorks\RCS.AdventureWorks.Services.Products\bin\RCS.AdventureWorks.Common.dll</HintPath>
+      <HintPath>..\..\..\services\AdventureWorks\RCS.AdventureWorks.Services.Products\bin\RCS.AdventureWorks.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
